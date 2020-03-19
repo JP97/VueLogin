@@ -7,15 +7,12 @@
           <input v-model="password" type="password" placeholder="password">
           <input type="submit" value="login">
       </form>
-      <!-- <div v-for="item in getUsers" v-bind:key=item.id>
-            <p>item.username</p>
-            <p>item.password</p>
-      </div> -->
   </div>
 </div>
 </template>
 
 <script>
+//import the getters from vuex
 import { mapGetters } from 'vuex';
 
 export default {
@@ -25,6 +22,8 @@ export default {
             password: ''
         };
     },
+    //state needs to be in a computed property
+    //make an array that specifies which getters we are going to use
     computed: mapGetters(['getUsers'])
 };
 </script>
