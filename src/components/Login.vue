@@ -2,7 +2,8 @@
 <div class="login">
     <h1>Spin-Robotics</h1>
     <div class="container mt3">
-        <form  class="loginform form-group">
+        <!-- runs a method when it gets submitted -->
+        <form @submit="tryLogin" class="loginform form-group">
             <!-- form controll makes the nice wide textbox around the input -->
             <input class="inputform form-control mb-3" v-model="username" type="text" placeholder="username">
             <input class="inputform form-control mb-3" v-model="password" type="password" placeholder="password">
@@ -18,8 +19,8 @@
 </template>
 
 <script>
-//import the getters from vuex
-import { mapGetters } from 'vuex';
+//import the getters and actions from vuex
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     data(){
@@ -30,7 +31,17 @@ export default {
     },
     //state needs to be in a computed property
     //make an array that specifies which getters we are going to use
-    computed: mapGetters(['getUsers'])
+    computed: mapGetters(['getUsers']),
+    methods:{
+        //spread operator with array that takes the actions from vuex
+        ...mapActions(['login']),
+
+        //the method runs and calls the action method from vuex and passes the data to it.
+        tryLogin(e){
+            e.preventDefault();
+            this.login(this.username, this.password);
+        }
+    }
 };
 </script>
 

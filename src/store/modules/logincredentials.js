@@ -22,7 +22,18 @@ const getters = {
     getUsers: (state) => state.userCredentials
 };
 
-const actions = {};
+const actions = {
+     login(/*{commit}, */username, password){
+        this.userCredentials.forEach(user => {
+            if(user.username === username && user.password === password){
+                console.log('you succesfully logged in');
+            }
+            else{
+                console.log('wrong username or password');
+            }
+        });
+    }
+};
 
 const mutations = {};
 
