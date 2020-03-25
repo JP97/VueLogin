@@ -1,11 +1,14 @@
 <template>
 <div class="login">
-    <h1>Spin-Robotics</h1>
-    <div class="container mt3">
+    <picture>
+        <source media="(min-width: 720px)" srcset="/216x88-SR_full.png">
+        <img src="/Spin Robotics_Final.svg" width="325" height="125">
+    </picture>
+    <div class="container">
         <!-- runs a method when it gets submitted -->
         <form @submit="tryLogin" class="loginform form-group">
             <!-- form controll makes the nice wide textbox around the input -->
-            <input class="inputform form-control mb-3" v-model="username" type="text" placeholder="username">
+            <input class="inputform form-control mb-4" v-model="username" type="text" placeholder="username">
             <input class="inputform form-control mb-3" v-model="password" type="password" placeholder="password">
            <span class="logingspan">
             <input type="checkbox" name="checkbox" id="">
@@ -55,7 +58,7 @@ export default {
     }
 
     .container{
-        margin-top:50px;
+        margin-top:10px;
     }
 
     .inputform{
@@ -68,10 +71,6 @@ export default {
         width:40%;
         /* because the container is flex i can align this "self" to the end */
         align-self:flex-end;
-    }
-
-    .loginspan{
-
     }
 
 </style>
