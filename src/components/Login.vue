@@ -6,10 +6,10 @@
     </picture>
     <div class="container">
         <!-- runs a method when it gets submitted -->
-        <form @submit="tryLogin" class="loginform form-group">
+        <form @submit="onLogin" class="loginform form-group">
             <!-- form controll makes the nice wide textbox around the input -->
-            <input class="inputform form-control mb-4" v-model="username" type="text" placeholder="username">
-            <input class="inputform form-control mb-3" v-model="password" type="password" placeholder="password">
+            <input class="inputform form-control mb-4" v-model="user.username" type="text" placeholder="username">
+            <input class="inputform form-control mb-3" v-model="user.password" type="text" placeholder="password">
            <span class="logingspan">
             <input type="checkbox" name="checkbox" id="">
             <label class="pl-2 pr-3" for="checkbox">forbliv logget ind</label>
@@ -28,8 +28,10 @@ import { mapGetters, mapActions } from 'vuex';
 export default {
     data(){
         return{
-            username: '',
-            password: ''
+            user: {
+                username: '',
+                password: ''
+            }
         };
     },
     //state needs to be in a computed property
@@ -40,9 +42,10 @@ export default {
         ...mapActions(['login']),
 
         //the method runs and calls the action method from vuex and passes the data to it.
-        tryLogin(e){
+        onLogin(e){
             e.preventDefault();
-            this.login(this.username, this.password);
+            //this just works if this is an object
+            this.login(this.user);
         }
     }
 };
